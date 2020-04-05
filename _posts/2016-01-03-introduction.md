@@ -1,41 +1,30 @@
 ---
 layout: post
-title: Introduction
+title: My first ever data science project
 ---
 
-*The Strange Case of Dr. Jekyll and Mr. Hyde* tells the story of a lawyer investigating the connection of two persons, Dr. Henry Jekyll and Mr. Edward Hyde. Chief among the novel's supporting cast is a man by the name of Mr. Poole, Dr. Jekyll's loyal butler.
+This morning brought a lot of firsts:
+* first data science project 
+* first semi-professional presentation in livesteam format
+* first virtual group project 
 
------
+### The setup:
 
-Poole is the butler for [Jekyll](http://jekyllrb.com), the static site generator. It's designed and developed by [@mdo](https://twitter.com/mdo) to provide a clear and concise foundational setup for any Jekyll site. It does so by furnishing a full vanilla Jekyll install with example layouts, pages, posts, and styles.
+The project prompt we were given was as follows: imagine you have been asked by a women-in-tech organization to help recruit attendees for a gala in early summer. Use the public [MTA turnstile data] (http://web.mta.info/developers/turnstile.html) to determine where to station canvassers around Manhattan.
 
-There are currently three themes built on Poole:
+### The Downfall:
+In my personal work during this project, I got stumped so many times. Even though my own analysis was never completed (thank goodness for group work!), I learned a ton of new things as a result. I became much more competent at grouping and aggregating functions. I also learned how to use the `transform` method, which I feel excited about deploying in future work.
 
-* [Hyde](http://hyde.getpoole.com)
-* [Lanyon](http://lanyon.getpoole.com)
-* [Enfield](http://enfield.getpoole.com)
+### The Big Wins:
+There were some really big wins for my team and me as we went about this project. In no particular order...
+* I used [pandas] (https://pandas.pydata.org/) to analyze data
+   This includes viewing, grouping, transforming and visualizing my data!
+* We figured out how to change the colors of bars in our charts. For example...
+   ![This graph](~/Downloads/greyedouttop20.png), which illustrates the stations that we removed for being outliers or poorly located for our purposes.
+* We put together a really streamlined and concise presentation.
+   This for me was one of the most satisfying parts - Possibly because I struggled with the analysis... or possibly because, as our instructors tell us, communication is just as important. In just 8 slides, we told an in depth story that took the viewer on one clear journey through our process and conclusions.
 
-Learn more and contribute on [GitHub]({{ site.github.repo }}).
+### The Cold (or shall I say *covid*) Hard Truth:
+At the end of the day, we added one new piece of consideration - can we really use MTA Turnstile data to plan for a street team to recruit for an in person event *in New York City this summer*?
 
-### What's included
-
-Poole is a streamlined Jekyll site designed and built as a foundation for building more meaningful themes. Poole, and every theme built on it like this one, includes the following:
-
-* Complete Jekyll setup included (layouts, config, [404]({{ site.baseurl }}/404.html), [RSS feed]({{ site.baseurl }}/atom.xml), posts, and [example page]({{ site.baseurl }}/about))
-* Mobile friendly design and development
-* Easily scalable text and component sizing with `rem` units in the CSS
-* Support for a wide gamut of HTML elements
-* Related posts (time-based, because Jekyll) below each post
-* Syntax highlighting, courtesy Jekyll's built-in support for Rouge
-
-Additional features are available in individual themes.
-
-### Browser support
-
-Poole and its themes are by preference a forward-thinking project. In addition to the latest versions of Chrome, Safari (mobile and desktop), and Firefox, it is only compatible with Internet Explorer 9 and above.
-
-### Download
-
-These themes are developed on and hosted with GitHub. Head to the [GitHub repository]({{ site.github.repo }}) for downloads, bug reports, and features requests.
-
-Thanks!
+I think that it's important for all data scientists to merge the requests they've received, with historical data **and** current events. We need to know what's different and similar about today from the past if we want to be able to accurately make predictions about the future. We cannot always assume trends will continue in the same way they have in the past.
