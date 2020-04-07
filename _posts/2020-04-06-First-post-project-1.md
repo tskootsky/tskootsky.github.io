@@ -17,7 +17,7 @@ In my personal work during this project, I got stumped so many times. Even thoug
 
 ### The Big Wins:
 There were some really big wins for my team and me as we went about this project. In no particular order...
-* I used [pandas](https://pandas.pydata.org/) to analyze data
+* I used [pandas](https://pandas.pydata.org/) to analyze data  
    This includes viewing, grouping, transforming and visualizing my data!
 * We figured out how to change the colors of bars in our charts. For example...
    ![This graph (testing 2)](./greyedouttop20.png "image")
