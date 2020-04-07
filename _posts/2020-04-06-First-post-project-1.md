@@ -18,9 +18,9 @@ In my personal work during this project, I got stumped so many times. Even thoug
 ### The Big Wins:
 There were some really big wins for my team and me as we went about this project. In no particular order...
 * I used [pandas](https://pandas.pydata.org/) to analyze data  
-   This includes viewing, grouping, transforming and visualizing my data!
+   -- This included viewing, grouping, transforming and visualizing my data!
 * We figured out how to change the colors of bars in our charts. For example...
-   ![This graph (testing 2)](./greyedouttop20.png "image")
+   ![This graph (testing 3)](~/Documents/ds/metis/tskootsky.github.io/_posts/greyedouttop20.png "image")
    illustrates the stations that we removed for being outliers or poorly located for our purposes.
 * We put together a really streamlined and concise presentation.
    This for me was one of the most satisfying parts - Possibly because I struggled with the analysis... or possibly because, as our instructors tell us, communication is just as important. In just 8 slides, we told an in depth story that took the viewer on one clear journey through our process and conclusions.
