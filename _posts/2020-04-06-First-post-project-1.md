@@ -5,7 +5,7 @@ title: My first ever data science project
 
 This morning brought a lot of firsts:
 * first data science project 
-* first semi-professional presentation in livesteam format
+* first semi-professional presentation in livestream format
 * first virtual group project 
 
 ### The setup:
@@ -20,7 +20,7 @@ There were some really big wins for my team and me as we went about this project
 * I used [pandas] (https://pandas.pydata.org/) to analyze data
    This includes viewing, grouping, transforming and visualizing my data!
 * We figured out how to change the colors of bars in our charts. For example...
-   ![This graph](http://placehold.it/800x400 "image")
+   ![This graph](/greyedouttop20.png "image")
    illustrates the stations that we removed for being outliers or poorly located for our purposes.
 * We put together a really streamlined and concise presentation.
    This for me was one of the most satisfying parts - Possibly because I struggled with the analysis... or possibly because, as our instructors tell us, communication is just as important. In just 8 slides, we told an in depth story that took the viewer on one clear journey through our process and conclusions.
