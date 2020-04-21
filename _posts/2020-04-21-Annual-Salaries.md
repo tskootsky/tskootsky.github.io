@@ -4,22 +4,21 @@ title: Linear Regression Model Predicts Salaries on 7 Key Features
 ---
 # The Origin Story
 
-I don't think I'm the only upper-middle-class, college-educated millenial who has suffered the pains of career choice paralysis. Many options, little guidance, sparse work experience. The endless support and weighty expectations of a family and culture that encourages "finding your own path" while turning a blind eye to the looming question of where you may end up along the immensely unequal compensation allocated to different types of work, industries and job functions.
+I don't think I'm the only upper-middle-class, college-educated millenial who has suffered the pains of career choice paralysis. Many options, little guidance, sparse work experience. The endless cheerleading of a family and culture that encourages "finding your own path" incongruously superimposed on the weighty expectation that you manage to land somewhere on the upper end of the immensely unequal compensation spectrum that values certain types of work, industries and job functions over others.
 
 In this post, I'll spare you the details of my own job-seeking/soul-searching story and get to the point:
-> Somewhere along the way, interspersed with personality tests, informational interviews and career coaching sessions, a couple people suggested I use [O*net Online](https://www.onetonline.org/) to browse occupations.
+<div class="message">
+Somewhere along the way, interspersed with personality tests, informational interviews and career coaching sessions, a couple people suggested I use [O*net Online](https://www.onetonline.org/) to browse occupations.
 O*net is a government database that provides detailed information about almost 1,000 occupations. The data it stores about those occupations formed the basis for this project.
+</div>
 
-<class message>
-What factors influence annual salary for American jobs?
-</class message>
+# So what factors influence annual salary for American jobs?
+The process I used to help answer this question is outlined below.
 
-# What I did
-
-### 1. Data Scraping
+## 1. Data Scraping
 I defined functions to parse the descriptors, number of elements and numerical features from each occupations' webpage and used BeautifulSoup to loop through job codes appended the extracted information to a dictionary for each page.
 
-### 2. Data Cleaning & Initial Feature Selection
+## 2. Data Cleaning & Initial Feature Selection
 
 <strong>Cleaning Process</strong>
 - Ordinal variables get 0 for all NaN values because they usually only have 1-4 possible attributes ranked out of 6 possible. Therefore the missing values should be 0 and not excluded.
@@ -30,12 +29,12 @@ I defined functions to parse the descriptors, number of elements and numerical f
 <strong>Initial Feature Selection</strong>
 I iterated through a few pair plots and variable transformations. Ultimately <em>I used the pairplot to choose the top 12 variables to carry forward</em> into the analysis phase. This number was arbitrary. It represented all the variables that I had reason to believe were a) not collinear with another feature and b) had some non-random correlation with the transformed target variable.
 
-### 3. Model Development
+## 3. Model Development
 I used StatsModels linear regression to fit a training subsection of my data. The initial R2 and Ajusted R2 were pretty strong with relatively low F-statistic, AIC, BIC, etc so I focused on the P-values of the coefficients. One by one, I removed insignificant (P > 0.05) features. When I got down to 7 features, my model seemed to be as strong as it could be. 
 
 I used cross-validation to compare the simple linear regression model to an Elastic Net model. The results were nearly identical, with slightly poorer results for the Elastic Net.
 
-### 4. Results & Interpretation
+## 4. Results & Interpretation
 
 <strong>The Numbers</strong>
 The following table shows the features and resulting coefficients of the linear regression model predicting Annual Salary
@@ -90,7 +89,7 @@ The following table shows the features and resulting coefficients of the linear 
 </table>
 
 <strong>The Meaning Behind it All?</strong>
-Job Zone, the feature with by far the highest positive coefficient, is an [O*net ranking]('https://www.onetonline.org/help/online/zones') from 1-5 that identifies the amount of education, training, and experience needed for a given occupation. 
+Job Zone, the feature with by far the highest positive coefficient, is an [O*net ranking](https://www.onetonline.org/help/online/zones) from 1-5 that identifies the amount of education, training, and experience needed for a given occupation. 
 
 It turns out that this model mostly reinforces traditional knowledge that to earn more in your job you need experience & education above all.
 
