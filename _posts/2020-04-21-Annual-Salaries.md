@@ -8,8 +8,8 @@ I don't think I'm the only upper-middle-class, college-educated millenial who ha
 
 In this post, I'll spare you the details of my own job-seeking/soul-searching story and get to the point:
 <div class="message">
-Somewhere along the way, interspersed with personality tests, informational interviews and career coaching sessions, a couple people suggested I use [O*net Online]() to browse occupations.
-[O*net](https://www.onetonline.org/) is a government database that provides detailed information about almost 1,000 occupations. The data it stores about those occupations formed the basis for this project.
+Somewhere along the way, interspersed with personality tests, informational interviews and career coaching sessions, a couple people suggested I use O*net Online to browse occupations.
+<a href='https://www.onetonline.org'>O*net</a> vs <a href=https://www.onetonline.org>O*net</a> is a government database that provides detailed information about almost 1,000 occupations. The data it stores about those occupations formed the basis for this project.
 </div>
 
 # So what factors influence annual salary for American jobs?
