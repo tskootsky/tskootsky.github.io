@@ -87,4 +87,4 @@ If anything, I think the most interesting conclusion is that in general, it seem
 
 On the other hand, people who generally have a positive outlook on life and potentially have more personal or intergenerational aspirations that have yet to be realized are more likely to hold the hope - and expressed belief - that thier childrens' lives will be better than thier own.
 
-And me? I prefer to stay in the present and practice non-judgement. The philosopher in me wants to know, what does "better" mean about the future anyway?
+And me? I prefer to stay in the present. The philosopher in me wants to know, what does "better" mean about the future anyway?
