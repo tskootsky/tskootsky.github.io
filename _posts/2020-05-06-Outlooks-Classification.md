@@ -7,165 +7,46 @@ title: Predicting Optimistic Outlooks in Americans
 
 
 <div class="message">
-  Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
+  Welcome! In this post I will describe my rationale and process building a classification model that predicts individuals' future outlooks.
 </div>
 
-Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>, nascetur ridiculus mus. *Aenean eu leo quam.* Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.
+## The Data
 
-> Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.
+**Some background:** Prior to jumping into the world of data science, I took a foray into academia, where I worked with a number of professors at both the UC Berkeley Haas School of Business and the Stanford Graduate School of Business on projects related to management and organizational behavior. In one of my favorite projects, we used a wide variety of public sources to compile a data set of proxy measures for cultural constructs. (If you don't know what that means- don't worry! The details aren't so important here). The important part is that I was introduced to some fabulous research organizations, including the [Pew Research Center](https://www.pewresearch.org/), whose 2016 survey [The State of American Jobs](https://www.pewsocialtrends.org/dataset/state-of-american-jobs-survey/) formed the basis for this project.
 
-Etiam porta **sem malesuada magna** mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
+#### What's in the survey?
 
-## Inline HTML elements
+I could talk for hours about survey design! While I'm not a fully-fledged expert (yet), I've worked with so many people who are and find it a fascinating art. I won't go into the details of that, but I would like to walk you through some more interesting bits about the data set.
 
-HTML defines a long list of available inline tags, a complete list of which can be found on the [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/HTML/Element).
+**What are a few of the main interest points relevant to this project?**
+- Form 1 and Form 2:
+  - Unfortunately for me, the survey splits thier respondants into two groups. While they ask many questions to ALL participants, at least half of the questions are only asked to one half of the participants. This makes sense from a data collection standpoint because you can only ask so much of a person's time. In my project, I only used questions that were asked to all participants in the survey.
+  - What this means for my model is that more of the demographic variables and fewer of the job-specific variables were kept. That's okay for the model, but less exciting to my personal interests.
 
-- **To bold text**, use `<strong>`.
-- *To italicize text*, use `<em>`.
-- Abbreviations, like <abbr title="HyperText Markup Langage">HTML</abbr> should use `<abbr>`, with an optional `title` attribute for the full phrase.
-- Citations, like <cite>&mdash; Mark otto</cite>, should use `<cite>`.
-- <del>Deleted</del> text should use `<del>` and <ins>inserted</ins> text should use `<ins>`.
-- Superscript <sup>text</sup> uses `<sup>` and subscript <sub>text</sub> uses `<sub>`.
+- Response distributions:
+  - Many of the response options were ordinal choices, such as 
+    * Very useful
+    * Somewhat useful
+    * Not too useful
+    * Not at all useful
+    * Prefer not to answer (only if volunteered)
+  - More often than not, responses among options were highly skewed or erratic and resulted in some very thin categories. To combat this, I grouped a lot of responses based on a judgement/combination of target feature mean by group (i.e. grouping responses that had similar rates of "positive outlooks") as well as theoretical rationale (e.g. grouping ages by generation)
 
-Most of these elements are styled by browsers with few modifications on our part.
+**What's left after all those changes and discards?**
+- A couple general questions on life outlook (e.g. "Generally, how would you say things are these days in your life?")
+- A few education questions (e.g. "What is the highest level of school you have completed?")
+- A few job-related questions (e.g. "Looking ahead, how important do you think it will be for you to get training and develop new skills throughout your worklife..?")
+- Demographic variables (from race and gender to political ideology and household information)
+- All variables were dummy coded
 
-## Footnotes
+## The Models
 
-Footnotes are supported as part of the Markdown syntax. Here's one in action. Clicking this number[^fn-sample_footnote] will lead you to a footnote. The syntax looks like:
+I built 6 different models using `GridSearchCV` to tune hyperparameters for F1 score.
 
-{% highlight text %}
-Clicking this number[^fn-sample_footnote]
-{% endhighlight %}
+> I chose to use F1 score in consideration of who might be interested in such a model. I think that if someone was looking to run a campaign or build political policy on this information, it would be about equally important to minimize false positives as false negatives.
 
-Each footnote needs the `^fn-` prefix and a unique ID to be referenced for the footnoted content. The syntax for that list looks something like this:
+The ROC curves lay relatively close to each other, with AUC scores hovering around 65-70%
 
-{% highlight text %}
-[^fn-sample_footnote]: Handy! Now click the return link to go back.
-{% endhighlight %}
+![ROC_ALL]({{tskootsky.github.io}}/images/roc_all_SQL.png)
 
-You can place the footnoted content wherever you like. Markdown parsers should properly place it at the bottom of the post.
-
-## Heading
-
-Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-
-### Code
-
-Inline code is available with the `<code>` element. Snippets of multiple lines of code are supported through Pygments. Longer lines will automatically scroll horizontally when needed.
-
-{% highlight js %}
-// Example can be run directly in your JavaScript console
-
-// Create a function that takes two arguments and returns the sum of those arguments
-var adder = new Function("a", "b", "return a + b");
-
-// Call the function
-adder(2, 6);
-// > 8
-{% endhighlight %}
-
-You may also optionally show code snippets with line numbers. Add `linenos` to the Pygments tags.
-
-{% highlight js linenos %}
-// Example can be run directly in your JavaScript console
-
-// Create a function that takes two arguments and returns the sum of those arguments
-var adder = new Function("a", "b", "return a + b");
-
-// Call the function
-adder(2, 6);
-// > 8
-{% endhighlight %}
-
-Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.
-
-### Gists via GitHub Pages
-
-Vestibulum id ligula porta felis euismod semper. Nullam quis risus eget urna mollis ornare vel eu leo. Donec sed odio dui.
-
-{% gist 13f94b734a4ddb132735 gist.md %}
-
-Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec sed odio dui. Vestibulum id ligula porta felis euismod semper.
-
-### Lists
-
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-
-* Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-* Donec id elit non mi porta gravida at eget metus.
-* Nulla vitae elit libero, a pharetra augue.
-
-Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.
-
-1. Vestibulum id ligula porta felis euismod semper.
-2. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-3. Maecenas sed diam eget risus varius blandit sit amet non magna.
-
-Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis.
-
-<dl>
-  <dt>HyperText Markup Language (HTML)</dt>
-  <dd>The language used to describe and define the content of a Web page</dd>
-
-  <dt>Cascading Style Sheets (CSS)</dt>
-  <dd>Used to describe the appearance of Web content</dd>
-
-  <dt>JavaScript (JS)</dt>
-  <dd>The programming language used to build advanced Web sites and applications</dd>
-</dl>
-
-Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo.
-
-### Images
-
-Quisque consequat sapien eget quam rhoncus, sit amet laoreet diam tempus. Aliquam aliquam metus erat, a pulvinar turpis suscipit at.
-
-![placeholder](http://placehold.it/800x400 "Large example image")
-![placeholder](http://placehold.it/400x200 "Medium example image")
-![placeholder](http://placehold.it/200x200 "Small example image")
-
-### Tables
-
-Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Upvotes</th>
-      <th>Downvotes</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <td>Totals</td>
-      <td>21</td>
-      <td>23</td>
-    </tr>
-  </tfoot>
-  <tbody>
-    <tr>
-      <td>Alice</td>
-      <td>10</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <td>Bob</td>
-      <td>4</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td>Charlie</td>
-      <td>7</td>
-      <td>9</td>
-    </tr>
-  </tbody>
-</table>
-
-Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
-
------
-
-Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a>
-
-[^fn-sample_footnote]: Handy! Now click the return link to go back.
+![confusion]({{tskootsky.github.io}}/images/lr_confusion_SQL.png)
