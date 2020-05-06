@@ -102,4 +102,4 @@ Furthermore, understanding the payoff of financial and temporal investments in b
 
 I would also like to segment by industry, job type, or even job zone to better understand the data and its implications.
 
-Overall, this model provides some interpretable evidence to suggest that job-seekers. career-changers, and young adults focus on building skills, education and experience as much as they can if they want the highest changes of landing a well-paying job. 
+Overall, this model provides some interpretable evidence to suggest that job-seekers, career-changers, and young adults focus on building skills, education and experience as much as they can if they want the highest chances of landing a well-paying job. 
